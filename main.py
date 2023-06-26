@@ -33,7 +33,7 @@ import sys
 secs = 0
 initTime = int(time.perf_counter())
 clockOffset = 0
-mode = 1
+mode = 0
 illum = 1
 blinkCount = 0
 #Stopwatch Declarations
@@ -123,7 +123,7 @@ def illum_button(channel):
 
 # Pin definitions
 #   Tube selectors
-hten = 14l
+hten = 14
 hone = 15
 mten = 18
 mone = 23
@@ -278,7 +278,6 @@ def clean():
             display(y, (y+2)%10, (y+4)%10, (y+6)%10, GPIO.HIGH)
             
 try:
-    tmrSecs = tmrInit
     while True:
                 
         secs = int(time.perf_counter())-initTime+clockOffset
@@ -307,7 +306,7 @@ try:
         if tmrRun == 1:
             tmrSecs = tmrInit + tmrOffset - int(time.perf_counter()) - tmrElapsed
             if tmrSecs <= 0:
-                tmrRun = 0
+                tmrRun = 0 
                 tmrSecs = 0
                 tmrInit = 0
         tmrSecsOne = tmrSecs%10
